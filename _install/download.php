@@ -49,8 +49,7 @@ if (!is_file($g['path_root'].'LICENSE'))
 		}
 	}
 	else {
-		//$rbPackage = getUrlData('http://www.kimsq.co.kr/__update/core/'.$version.'.zip',10);
-		$rbPackage = getUrlData('https://github.com/kimsq/rb/releases/download/'.$version.'.zip',10);
+		$rbPackage = getUrlData('http://www.kimsq.co.kr/__update/core/'.$version.'.zip',10);
 		if (!trim($rbPackage))
 		{
 			echo '<script>';
