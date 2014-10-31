@@ -13,6 +13,7 @@ $_tmptable = array();
 $_tmpdfile = $g['path_var'].'db.info.php';
 $_tmptfile = $g['path_var'].'table.info.php';
 include $g['path_core'].'function/sys.func.php';
+include $g['path_core'].'function/dir.func.php';
 include $g['path_core'].'function/db.mysql.func.php';
 $date = getVDate(0);
 
@@ -37,6 +38,23 @@ if ($ISRBDB[0])
 	echo '<script>parent.isSubmit=false;parent.stepCheck("prev");parent.stepCheck("prev");</script>';
 	getLink('','',_LANG('a004','install'),'');
 }
+
+// create empty folder
+DirMake($g['path_page']);
+DirMake($g['path_file']);
+DirMake($g['path_tmp']);
+DirMake($g['path_tmp'].'app');
+DirMake($g['path_tmp'].'backup');
+DirMake($g['path_tmp'].'cache');
+DirMake($g['path_tmp'].'out');
+DirMake($g['path_tmp'].'session');
+DirMake($g['path_tmp'].'widget');
+DirMake($g['path_var'].'menu');
+DirMake($g['path_var'].'peak');
+DirMake($g['path_var'].'update');
+DirMake($g['path_var'].'xml');
+DirMake($g['path_layout'].'default/_images');
+DirMake($g['path_switch'].'top');
 
 $vfile = $g['path_var'].'php.version.txt';
 $fp = fopen($vfile,'w');
@@ -85,6 +103,7 @@ while(false !== ($_file = readdir($dirh)))
 	else {
 		$moduledir[$_file] = array($_file,0);
 	}
+	DirMake($g['path_module'].$_file.'/update');
 } 
 closedir($dirh);
 
